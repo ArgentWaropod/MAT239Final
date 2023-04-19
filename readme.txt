@@ -1,0 +1,28 @@
+--Ryan Black's MAT 239 Final Project--
+
+This project replicates the Prisoners' Dillema and the Game of Bridge scenarios from the MAT 239 Final Project sheet
+
+How to use
+-----------
+
+To use this application, use your mouse to select the appropriate menu items. Each menu contains 2-3 scenarios for you to select from. The scenarios are described below. You also have the option to select a Mass Simulation, which runs the scenario 10000 times and provides an average.
+
+Game of Bridge
+---------------
+
+The scenario creates a bridge of colored tiles, each scenario runs an 18 wide bridge with various tiles on each row. When it's a player's turn, if they do not know what platform is green, they will select one at random. If the platform was Green, they can proceed, but if the platform is red, that player is eliminated. A player will never step on a platform they know is red. Once they cross all 18 platforms, they are considered to have "Won" the Game of Bridge. In scenario 1, each bridge segment has 2 tiles, one green and one red, while in Scenario 2, each bridge segment has 3 tiles, two green and one red. You can also choose to run a mass Simulation of each Scenario, which gives you the average number of players that make it across each bridge.
+
+How it Works
+-------------
+
+The Game of Bridge creates two different objects, each a list of Bridge Tile classes which contain the number 0 (Unknown), 1 (Red), or 2 (Green). The first object is the actual board state. This is the real board that the rest of the game judges on. The second is the "Known" board, an equally sized board which represents the contestants known information about the board ahead of them. When a player's turn starts, they reach one of the 18 board states. First, the player checks to see if there are any known green spaces by checking to se eif any of the Bridge Tiles in the Known board have a value of 2. If so, they will automatically pick one of the known green tiles and proceed to the next tile. If not, then the plaeyr randomly picks one of the tiles that they know isn't red. The game then checks the value of the Bridge Tile on that Bridge segment. If the tile is red, the player is eliminated and the game skips to the next player, since there is no need to run through what happens with the rest of the tiles. The game also marks the equivilant tile on the Known board as a known Red tile. If the player selects a green tile, the game updates the Known board by marking the equivilant tile as green, and the player can proceed. The simulation is ran with 20 players, who all take their turns one after the other. If the game is run as a Mass Simulation, the game is run 10,000 times, keeping a running total of how many prisoners completed the game of Bridge. It then divides that number by 10,000 to get the average number of players that completed the game of Bridge.
+
+Prisoners' Dilemma
+-------------------
+
+A group of 4 prisoners are stuck in a tower for an indeterminent ammount of time. However, the group has a chance to escape if they simply play a few games of chance. This scenario is a group success. Either everyone in the tower is freed or everyone remains in the tower for eternity. There are three scenarios. Scenario 1 involves a dice roll. Each prisoner rolls a die and if the total is greater than or equal to 8, everyone is freed, else everyone is imprisoned forever. Scenario 2 involves a coin flip, if everyone flips a coin and gets tails, they all are freed, else everyone is imprisoned forever. Scenario 3 involves the prisoners first flipping a coin and, if they get a heads, rolling a die. If a prisoner gets heads and then rolls a number greater than 1 on the Die, then everyone is imprisoned forever, but if not, everyone is freed. You can also chosoe to run a Mass Simulation of each scenario, which gives you the percentage chance that each scenario results in everyone going free.
+
+How it Works
+-------------
+
+The Prisoners' Dillema is three games wrapped into one. The first is a simple dice roller. This uses the C# random function to roll a 6 sided dice, and keeps a running tally of the total number on each dice. If the dice total is equal to or greater than 8, the every prisoner can leave, returning a true on the bool. If the result is less than 8, then the prisoners are trapped forever, returning a flase on the bool. The second is a coin flip. This uses the same random function, this time limited to either 0 (Heads) or 1 (Tails). Unlike the dice roller, there's no need to run through the rest of the code if a player gets a certain result, so if anyone gets a 0 on the coin flip, then the scenario immediately stops and returns a false on the bool. But if the program makes it through to the final player, then it returns a true, because the only way this can occur is if the program isn't stopped by a player flipping heads. The third scenario uses both functions. First, it uses a coin flip from Scenario 2, and if the result of the coin flip is equal to 0 (Heads), then you use the dice roller from Scenario 1. If the returned roll is greater than 1, then you are imprisoned forever and, much like Scenario 2, the game immediately returns false on the bool and ends. However, if every player either get tails or all the players that got heads rolled a 1, then the program returns true. For the Mass Simulation, the simulation runs 10,000 instances of the selected Scenario, keeping a total number of true outputs from the apps. That number is divided by 10,000 (Of which is multiplied by 100 to get a percentage) to get the average success rate for each scenario.
