@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "FinalProjectMAT239_Windows/1.0.0": {
+        "runtime": {
+          "FinalProjectMAT239_Windows.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FinalProjectMAT239_Windows/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

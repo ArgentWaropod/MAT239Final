@@ -102,6 +102,10 @@ namespace FinalProjectMAT239_Windows
                 if (!isMassSim)
                 {
                     listBox1.Items.Add("Total is greater than 8, everyone is free to go!");
+                    for (int i = 0; i < 4; i++)
+                    {
+                        statuses[i].BackColor = Color.Green;
+                    }
 
                 }
                 return true;
@@ -111,7 +115,10 @@ namespace FinalProjectMAT239_Windows
                 if (!isMassSim)
                 {
                     listBox1.Items.Add("Total is less than 8, you'll be imprisoned forever!");
-
+                    for (int i = 0; i < 4; i++)
+                    {
+                        statuses[i].BackColor = Color.Red;
+                    }
                 }
                 return false;
             }
